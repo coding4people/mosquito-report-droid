@@ -2,10 +2,16 @@ package report.mosquito.droid;
 
 import android.app.Application;
 
+import report.mosquito.droid.di.components.AppComponent;
+import report.mosquito.droid.di.components.DaggerAppComponent;
+import report.mosquito.droid.di.modules.AppModule;
+
 /**
  * Created by adriano on 23/02/16.
  */
 public class MosquitoApp extends Application {
+
+    private AppComponent appComponent;
 
     @Override
     public void onCreate() {
@@ -14,6 +20,13 @@ public class MosquitoApp extends Application {
     }
 
     private void initializerInjector() {
+        appComponent = DaggerAppComponent
+                .builder()
+                .appModule(new AppModule(this))
+                .build();
+    }
 
+    public AppComponent getAppComponent() {
+        return appComponent;
     }
 }
