@@ -19,7 +19,7 @@ public class NetworkModule {
         this.baseUrl = baseUrl;
     }
 
-    @Provides @Singleton @Named("retrofit")
+    @Provides @Singleton
     Retrofit provideRetrofit() {
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)

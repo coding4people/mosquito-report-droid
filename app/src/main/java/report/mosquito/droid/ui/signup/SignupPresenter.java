@@ -12,17 +12,17 @@ import retrofit2.Retrofit;
 /**
  * Created by adriano on 23/02/16.
  */
-public class SignupPresenter {
+public class SignUpPresenter {
 
     private Retrofit retrofit;
-    private SignupPresenter.View view;
+    private SignUpPresenter.View view;
 
     @Inject
-    public SignupPresenter(@Named("retrofit") Retrofit retrofit) {
+    public SignUpPresenter(Retrofit retrofit) {
         this.retrofit = retrofit;
     }
 
-    public void setView(@NonNull SignupPresenter.View view) {
+    public void setView(@NonNull SignUpPresenter.View view) {
         this.view = view;
     }
 

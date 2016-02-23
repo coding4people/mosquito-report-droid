@@ -9,6 +9,7 @@ import dagger.Component;
 import report.mosquito.droid.di.modules.AppModule;
 import report.mosquito.droid.di.modules.NetworkModule;
 import report.mosquito.droid.ui.BaseActivity;
+import report.mosquito.droid.ui.signup.SignUpActivity;
 import retrofit2.Retrofit;
 
 /**
@@ -17,8 +18,7 @@ import retrofit2.Retrofit;
 @Singleton
 @Component(modules = { AppModule.class, NetworkModule.class })
 public interface AppComponent {
-    void inject(BaseActivity activity);
+    void inject(SignUpActivity activity);
 
     Context context();
-    Retrofit retrofit();
 }
