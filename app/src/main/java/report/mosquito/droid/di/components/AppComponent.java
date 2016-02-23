@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import report.mosquito.droid.di.modules.AppModule;
+import report.mosquito.droid.ui.BaseActivity;
 
 /**
  * Created by adriano on 23/02/16.
@@ -14,7 +15,7 @@ import report.mosquito.droid.di.modules.AppModule;
 @Singleton
 @Component(modules = AppModule.class)
 public interface AppComponent {
-    void inject(AppCompatActivity activity);
+    void inject(BaseActivity activity);
 
     Context context();
 }
