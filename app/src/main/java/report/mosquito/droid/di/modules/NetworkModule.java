@@ -1,5 +1,6 @@
 package report.mosquito.droid.di.modules;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -18,7 +19,7 @@ public class NetworkModule {
         this.baseUrl = baseUrl;
     }
 
-    @Provides @Singleton
+    @Provides @Singleton @Named("retrofit")
     Retrofit provideRetrofit() {
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
