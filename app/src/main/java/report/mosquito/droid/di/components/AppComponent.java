@@ -7,15 +7,18 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import report.mosquito.droid.di.modules.AppModule;
+import report.mosquito.droid.di.modules.NetworkModule;
 import report.mosquito.droid.ui.BaseActivity;
+import retrofit2.Retrofit;
 
 /**
  * Created by adriano on 23/02/16.
  */
 @Singleton
-@Component(modules = AppModule.class)
+@Component(modules = { AppModule.class, NetworkModule.class })
 public interface AppComponent {
     void inject(BaseActivity activity);
 
     Context context();
+    Retrofit retrofit();
 }

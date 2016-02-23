@@ -5,6 +5,7 @@ import android.app.Application;
 import report.mosquito.droid.di.components.AppComponent;
 import report.mosquito.droid.di.components.DaggerAppComponent;
 import report.mosquito.droid.di.modules.AppModule;
+import report.mosquito.droid.di.modules.NetworkModule;
 
 /**
  * Created by adriano on 23/02/16.
@@ -23,6 +24,7 @@ public class MosquitoApp extends Application {
         appComponent = DaggerAppComponent
                 .builder()
                 .appModule(new AppModule(this))
+                .networkModule(new NetworkModule(getString(R.string.api_base_url)))
                 .build();
     }
 

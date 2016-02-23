@@ -19,7 +19,7 @@ public class AppModule {
     public AppModule (MosquitoApp application) { this.application = application; }
 
     @Provides @Singleton
-    Context providerApplicationContext() {
+    Context provideApplicationContext() {
         return this.application;
     }
 }
