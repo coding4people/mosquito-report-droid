@@ -3,7 +3,6 @@ package report.mosquito.droid.ui.signup;
 import android.support.annotation.NonNull;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import report.mosquito.droid.models.User;
 import report.mosquito.droid.ui.NetworkView;
@@ -14,7 +13,7 @@ import retrofit2.Retrofit;
  */
 public class SignUpPresenter {
 
-    private Retrofit retrofit;
+    private final Retrofit retrofit;
     private SignUpPresenter.View view;
 
     @Inject
@@ -26,13 +25,13 @@ public class SignUpPresenter {
         this.view = view;
     }
 
-    public void doSignup(@NonNull User user) {
+    public void doSignUp(@NonNull User user) {
         view.showLoading();
+        view.signUpCallback();
         view.hideLoading();
-        view.signupCallback();
     }
 
     public interface View extends NetworkView {
-        void signupCallback ();
+        void signUpCallback();
     }
 }

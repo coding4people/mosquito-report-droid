@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import report.mosquito.droid.MosquitoApp;
 import report.mosquito.droid.di.modules.AppModule;
 import report.mosquito.droid.di.modules.NetworkModule;
 import report.mosquito.droid.ui.BaseActivity;

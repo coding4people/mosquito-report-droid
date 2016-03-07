@@ -1,6 +1,7 @@
 package report.mosquito.droid.ui.signup;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
 
     @Inject SignUpPresenter presenter;
 
+    @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.sign_up_email) TextView email;
     @Bind(R.id.sign_up_first_name) TextView firstName;
     @Bind(R.id.sign_up_last_name) TextView lastName;
@@ -35,18 +37,24 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        getAppComponent().inject(this);
+        super.getAppComponent().inject(this);
 
+        setSupportActionBar(toolbar);
         presenter.setView(this);
     }
 
     @OnClick(R.id.sign_up_action)
     public void doSignup() {
-        presenter.doSignup(new User());
+        User user = new User(firstName.getText().toString(),
+                            lastName.getText().toString(),
+                            email.getText().toString(),
+                            password.getText().toString());
+
+        presenter.doSignUp(user);
     }
 
     @Override
-    public void signupCallback() {
+    public void signUpCallback() {
         Toast.makeText(this, "Sign up", Toast.LENGTH_SHORT).show();
     }
 

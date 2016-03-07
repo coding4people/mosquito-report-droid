@@ -1,6 +1,5 @@
 package report.mosquito.droid.di.modules;
 
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;

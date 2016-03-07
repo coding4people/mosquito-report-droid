@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Mosquito Report</string>
-    <string name="sign_up_action">Sign up</string>
+    <string name="sign_up_title">Sign up</string>
+    <string name="sign_up_action">@string/sign_up_title</string>
 </resources>
