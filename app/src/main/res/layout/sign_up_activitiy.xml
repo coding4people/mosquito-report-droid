@@ -11,7 +11,7 @@
         android:minHeight="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="@dimen/default_elevation"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:theme="@style/ThemeOverlay.AppCompat.Light"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
     <EditText
         android:layout_width="match_parent"

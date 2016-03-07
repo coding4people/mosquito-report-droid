@@ -4,5 +4,6 @@
     <color name="color_primary_dark">#000000</color>
     <color name="color_accent">#ff5349</color>
 
+    <color name="text_primary">#000000</color>
     <color name="primary_button">@color/color_accent</color>
 </resources>

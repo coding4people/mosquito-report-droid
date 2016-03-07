@@ -40,6 +40,7 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
         super.getAppComponent().inject(this);
 
         setSupportActionBar(toolbar);
+
         presenter.setView(this);
     }
 
