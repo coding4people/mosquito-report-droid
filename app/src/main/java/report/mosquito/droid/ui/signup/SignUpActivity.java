@@ -45,7 +45,7 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
     }
 
     @OnClick(R.id.sign_up_action)
-    public void doSignup() {
+    public void doSignUp() {
         User user = new User(firstName.getText().toString(),
                             lastName.getText().toString(),
                             email.getText().toString(),
@@ -60,13 +60,8 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
     }
 
     @Override
-    public void showLoading() {
+    public void showLoading(boolean show) {
         Toast.makeText(this, "Show Loading", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void hideLoading() {
-        Toast.makeText(this, "Hide Loading", Toast.LENGTH_SHORT).show();
     }
 
     @Override

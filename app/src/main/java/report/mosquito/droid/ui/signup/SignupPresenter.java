@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import report.mosquito.droid.models.User;
 import report.mosquito.droid.services.AuthService;
+import report.mosquito.droid.services.RequestCallback;
 import report.mosquito.droid.ui.NetworkView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,16 +34,15 @@ public class SignUpPresenter {
         view.showLoading();
 
         Call<User> call = service.signUp(user);
-        call.enqueue(new Callback<User>() {
+        call.enqueue(new RequestCallback<User>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                view.signUpCallback(response.body());
-                view.hideLoading();
+            public void onSuccess(User user) {
+                view.signUpCallback(user);
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                view.hideLoading();
+            public void onError() {
+                view.onRequestError();
             }
         });
     }

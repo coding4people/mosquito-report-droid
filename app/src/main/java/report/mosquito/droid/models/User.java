@@ -6,10 +6,13 @@ import com.google.gson.annotations.SerializedName;
  * Created by adriano on 23/02/16.
  */
 public class User {
-    @SerializedName("lastname")
-    public String firstName;
+    @SerializedName("guid")
+    public String guid;
 
     @SerializedName("firstname")
+    public String firstName;
+
+    @SerializedName("lastname")
     public String lastName;
 
     @SerializedName("email")
@@ -17,6 +20,18 @@ public class User {
 
     @SerializedName("password")
     public String password;
+
+    @SerializedName("location")
+    public String location;
+
+    @SerializedName("facebookurl")
+    public String facebookurl;
+
+    @SerializedName("twitter")
+    public String twitter;
+
+    @SerializedName("profilepictureguid")
+    public String profilepictureguid;
 
     public  User() { }
 
