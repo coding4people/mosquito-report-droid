@@ -2,4 +2,13 @@
     <string name="app_name">Mosquito Report</string>
     <string name="sign_up_title">Sign up</string>
     <string name="sign_up_action">@string/sign_up_title</string>
+    <string name="form_label_email">Email</string>
+    <string name="form_label_confirm_password">Confirm Password</string>
+    <string name="form_label_password">Password</string>
+    <string name="form_label_last_name">Last Name</string>
+    <string name="form_label_first_name">First Name</string>
+    <string name="form_invalid_email_empty">Fill the email</string>
+    <string name="form_invalid_first_name_empty">Fill the first name</string>
+    <string name="form_invalid_last_name_empty">Fill the last name</string>
+    <string name="form_invalid_password_empty">Fill the password</string>
 </resources>

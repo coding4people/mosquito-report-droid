@@ -9,8 +9,6 @@ import report.mosquito.droid.services.AuthService;
 import report.mosquito.droid.services.RequestCallback;
 import report.mosquito.droid.ui.NetworkView;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 
 /**
@@ -31,7 +29,7 @@ public class SignUpPresenter {
     }
 
     public void doSignUp(@NonNull User user) {
-        view.showLoading();
+        view.showLoading(true);
 
         Call<User> call = service.signUp(user);
         call.enqueue(new RequestCallback<User>() {

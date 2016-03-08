@@ -4,6 +4,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="0px"
+        android:layout_height="0px"/>
+
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,26 +20,77 @@
         android:elevation="@dimen/default_elevation"
         app:theme="@style/ThemeOverlay.AppCompat.Light"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-    <EditText
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/sign_up_email"/>
-    <EditText
+        android:id="@+id/sign_up_email"
+        android:layout_marginTop="4dp"
+        android:hint="@string/form_label_email">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/sign_up_first_name"/>
-    <EditText
+        android:id="@+id/sign_up_first_name"
+        android:layout_marginTop="4dp"
+        android:hint="@string/form_label_first_name">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/sign_up_last_name"/>
-    <EditText
+        android:id="@+id/sign_up_last_name"
+        android:layout_marginTop="4dp"
+        android:hint="@string/form_label_last_name">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/sign_up_password"/>
-    <EditText
+        android:id="@+id/sign_up_password"
+        android:layout_marginTop="4dp"
+        android:hint="@string/form_label_password">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/sign_up_cofirm_password"/>
+        android:id="@+id/sign_up_confirm_password"
+        android:layout_marginTop="4dp"
+        android:hint="@string/form_label_confirm_password">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+
+    </android.support.design.widget.TextInputLayout>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

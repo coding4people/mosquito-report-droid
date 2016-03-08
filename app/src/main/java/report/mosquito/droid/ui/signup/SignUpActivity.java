@@ -1,8 +1,8 @@
 package report.mosquito.droid.ui.signup;
 
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import javax.inject.Inject;
@@ -22,11 +22,11 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
     @Inject SignUpPresenter presenter;
 
     @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.sign_up_email) TextView email;
-    @Bind(R.id.sign_up_first_name) TextView firstName;
-    @Bind(R.id.sign_up_last_name) TextView lastName;
-    @Bind(R.id.sign_up_password) TextView password;
-    @Bind(R.id.sign_up_cofirm_password) TextView confirmPassword;
+    @Bind(R.id.sign_up_email) TextInputLayout email;
+    @Bind(R.id.sign_up_first_name) TextInputLayout firstName;
+    @Bind(R.id.sign_up_last_name) TextInputLayout lastName;
+    @Bind(R.id.sign_up_password) TextInputLayout password;
+    @Bind(R.id.sign_up_confirm_password) TextInputLayout confirmPassword;
 
     @Override
     protected int getLayoutId() {
@@ -46,12 +46,52 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
 
     @OnClick(R.id.sign_up_action)
     public void doSignUp() {
-        User user = new User(firstName.getText().toString(),
-                            lastName.getText().toString(),
-                            email.getText().toString(),
-                            password.getText().toString());
+
+
+        if (!validate()) {
+            return;
+        }
+
+        User user = new User(firstName.getEditText().getText().toString(),
+                lastName.getEditText().getText().toString(),
+                email.getEditText().getText().toString(),
+                password.getEditText().getText().toString());
 
         presenter.doSignUp(user);
+    }
+
+    private boolean validate() {
+        boolean isValid = true;
+
+        if (email.getEditText().getText().toString().isEmpty()) {
+            email.setError(getString(R.string.form_invalid_email_empty));
+            isValid = false;
+        } else {
+            email.setErrorEnabled(false);
+        }
+
+        if (firstName.getEditText().getText().toString().isEmpty()) {
+            firstName.setError(getString(R.string.form_invalid_first_name_empty));
+            isValid = false;
+        } else {
+            firstName.setErrorEnabled(false);
+        }
+
+        if (lastName.getEditText().getText().toString().isEmpty()) {
+            lastName.setError(getString(R.string.form_invalid_last_name_empty));
+            isValid = false;
+        } else {
+            lastName.setErrorEnabled(false);
+        }
+
+        if (password.getEditText().getText().toString().isEmpty()) {
+            password.setError(getString(R.string.form_invalid_password_empty));
+            isValid = false;
+        } else {
+            password.setErrorEnabled(false);
+        }
+
+        return isValid;
     }
 
     @Override
