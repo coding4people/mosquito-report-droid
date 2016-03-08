@@ -55,8 +55,8 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
     }
 
     @Override
-    public void signUpCallback() {
-        Toast.makeText(this, "Sign up", Toast.LENGTH_SHORT).show();
+    public void signUpCallback(User user) {
+
     }
 
     @Override
@@ -67,5 +67,10 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
     @Override
     public void hideLoading() {
         Toast.makeText(this, "Hide Loading", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onRequestError() {
+
     }
 }

@@ -6,4 +6,5 @@ package report.mosquito.droid.ui;
 public interface NetworkView {
     void showLoading();
     void hideLoading();
+    void onRequestError();
 }

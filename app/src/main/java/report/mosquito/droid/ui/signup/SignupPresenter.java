@@ -5,7 +5,11 @@ import android.support.annotation.NonNull;
 import javax.inject.Inject;
 
 import report.mosquito.droid.models.User;
+import report.mosquito.droid.services.AuthService;
 import report.mosquito.droid.ui.NetworkView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 /**
@@ -13,12 +17,12 @@ import retrofit2.Retrofit;
  */
 public class SignUpPresenter {
 
-    private final Retrofit retrofit;
+    private final AuthService service;
     private SignUpPresenter.View view;
 
     @Inject
     public SignUpPresenter(Retrofit retrofit) {
-        this.retrofit = retrofit;
+        service = retrofit.create(AuthService.class);
     }
 
     public void setView(@NonNull SignUpPresenter.View view) {
@@ -27,11 +31,23 @@ public class SignUpPresenter {
 
     public void doSignUp(@NonNull User user) {
         view.showLoading();
-        view.signUpCallback();
-        view.hideLoading();
+
+        Call<User> call = service.signUp(user);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                view.signUpCallback(response.body());
+                view.hideLoading();
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                view.hideLoading();
+            }
+        });
     }
 
     public interface View extends NetworkView {
-        void signUpCallback();
+        void signUpCallback(User user);
     }
 }
