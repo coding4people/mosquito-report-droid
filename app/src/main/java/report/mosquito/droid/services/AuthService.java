@@ -11,4 +11,7 @@ import retrofit2.http.POST;
 public interface AuthService {
     @POST("signup/email")
     Call<User> signUp(@Body User user);
+
+    @POST("auth/email")
+    Call<User> signIn(@Body User user);
 }

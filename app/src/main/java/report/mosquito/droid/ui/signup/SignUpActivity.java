@@ -22,9 +22,10 @@ import report.mosquito.droid.ui.BaseActivity;
 /**
  * Created by adriano on 23/02/16.
  */
-public class SignUpActivity extends BaseActivity implements SignUpPresenter.View {
+public class SignUpActivity extends BaseActivity implements AuthPresenter.View {
 
-    @Inject SignUpPresenter presenter;
+    @Inject
+    AuthPresenter presenter;
 
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.sign_up_form) LinearLayout form;
@@ -109,7 +110,7 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
     }
 
     @Override
-    public void signUpCallback(User user) {
+    public void authCallback(User user) {
 
     }
 
