@@ -6,7 +6,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 
 import javax.inject.Inject;
 
@@ -34,7 +33,6 @@ public class SignUpActivity extends BaseActivity implements AuthPresenter.View {
     @Bind(R.id.sign_up_last_name) TextInputLayout lastName;
     @Bind(R.id.sign_up_password) TextInputLayout password;
     @Bind(R.id.sign_up_confirm_password) TextInputLayout confirmPassword;
-    @Bind(R.id.progressbar) ProgressBar progressBar;
     @Bind(R.id.progressMask) View progressMask;
 
     @Override
@@ -118,7 +116,6 @@ public class SignUpActivity extends BaseActivity implements AuthPresenter.View {
     public void showLoading(boolean show) {
         int visibility = show ? View.VISIBLE : View.GONE;
 
-        progressBar.setVisibility(visibility);
         progressMask.setVisibility(visibility);
 
         int count = form.getChildCount();

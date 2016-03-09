@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@id/toolbar"
-        android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="@dimen/default_elevation"
-        app:theme="@style/ThemeOverlay.AppCompat.Light"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    <include
+        layout="@layout/toolbar"
+        android:id="@id/toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -113,23 +106,8 @@
 
     </ScrollView>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@id/progressMask"
-        android:background="#99000000"
-        android:visibility="gone"
-        android:elevation="8dp"/>
-
-    <ProgressBar
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:id="@id/progressbar"
-        style="?android:progressBarStyleLarge"
-        android:layout_gravity="center"
-        android:indeterminate="true"
-        android:clickable="false"
-        android:visibility="gone"
-        android:elevation="8dp"/>
+    <include
+        layout="@layout/mask_progressbar"
+        android:id="@id/progressMask" />
 
 </FrameLayout>
