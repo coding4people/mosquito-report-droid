@@ -1,4 +1,4 @@
-package report.mosquito.droid.ui.signup;
+package report.mosquito.droid.ui.auth;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -114,27 +114,11 @@ public class SignUpActivity extends BaseActivity implements AuthPresenter.View {
 
     @Override
     public void showLoading(boolean show) {
-        int visibility = show ? View.VISIBLE : View.GONE;
-
-        progressMask.setVisibility(visibility);
-
-        int count = form.getChildCount();
-        for (int i = 0; i < count; i++) {
-            View view = form.getChildAt(i);
-            if (view instanceof TextInputLayout) {
-                ((TextInputLayout) view).getEditText().setEnabled(!show);
-            }
-
-            view.setEnabled(!show);
-        }
+        presenter.showProgressBar(show, form, progressMask);
     }
 
     @Override
     public void onRequestError() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.error_title);
-        builder.setMessage(R.string.network_error_message);
-        builder.setPositiveButton(R.string.ok, null);
-        builder.show();
+        presenter.showErrorMessage(this);
     }
 }
