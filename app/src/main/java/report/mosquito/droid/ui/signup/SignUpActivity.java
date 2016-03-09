@@ -2,6 +2,7 @@ package report.mosquito.droid.ui.signup;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,7 +16,6 @@ import butterknife.OnClick;
 import report.mosquito.droid.R;
 import report.mosquito.droid.di.components.AuthComponent;
 import report.mosquito.droid.di.components.DaggerAuthComponent;
-import report.mosquito.droid.di.modules.NetworkModule;
 import report.mosquito.droid.models.User;
 import report.mosquito.droid.ui.BaseActivity;
 
@@ -124,15 +124,19 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
         for (int i = 0; i < count; i++) {
             View view = form.getChildAt(i);
             if (view instanceof TextInputLayout) {
-                ((TextInputLayout) view).getEditText().setEnabled(show);
+                ((TextInputLayout) view).getEditText().setEnabled(!show);
             }
 
-            view.setEnabled(show);
+            view.setEnabled(!show);
         }
     }
 
     @Override
     public void onRequestError() {
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.error_title);
+        builder.setMessage(R.string.network_error_message);
+        builder.setPositiveButton(R.string.ok, null);
+        builder.show();
     }
 }

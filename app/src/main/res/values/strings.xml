@@ -11,4 +11,7 @@
     <string name="form_invalid_first_name_empty">Fill the first name</string>
     <string name="form_invalid_last_name_empty">Fill the last name</string>
     <string name="form_invalid_password_empty">Fill the password</string>
+    <string name="error_title">Error</string>
+    <string name="network_error_message">Conection error</string>
+    <string name="ok">OK</string>
 </resources>

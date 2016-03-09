@@ -15,7 +15,6 @@ public abstract class RequestCallback<T> implements Callback<T> {
             this.onSuccess(response.body());
         } else {
             this.onError();
-            response.errorBody();
         }
     }
 
