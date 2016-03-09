@@ -36,11 +36,13 @@ public class SignUpPresenter {
             @Override
             public void onSuccess(User user) {
                 view.signUpCallback(user);
+                view.showLoading(false);
             }
 
             @Override
             public void onError() {
                 view.onRequestError();
+                view.showLoading(false);
             }
         });
     }

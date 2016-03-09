@@ -3,7 +3,9 @@ package report.mosquito.droid.ui.signup;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import javax.inject.Inject;
 
@@ -22,11 +24,14 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
     @Inject SignUpPresenter presenter;
 
     @Bind(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.sign_up_form) LinearLayout form;
     @Bind(R.id.sign_up_email) TextInputLayout email;
     @Bind(R.id.sign_up_first_name) TextInputLayout firstName;
     @Bind(R.id.sign_up_last_name) TextInputLayout lastName;
     @Bind(R.id.sign_up_password) TextInputLayout password;
     @Bind(R.id.sign_up_confirm_password) TextInputLayout confirmPassword;
+    @Bind(R.id.progressbar) ProgressBar progressBar;
+    @Bind(R.id.progressMask) View progressMask;
 
     @Override
     protected int getLayoutId() {
@@ -41,13 +46,13 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
 
         setSupportActionBar(toolbar);
 
+
+
         presenter.setView(this);
     }
 
     @OnClick(R.id.sign_up_action)
     public void doSignUp() {
-
-
         if (!validate()) {
             return;
         }
@@ -101,7 +106,20 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
 
     @Override
     public void showLoading(boolean show) {
-        Toast.makeText(this, "Show Loading", Toast.LENGTH_SHORT).show();
+        int visibility = show ? View.VISIBLE : View.GONE;
+
+        progressBar.setVisibility(visibility);
+        progressMask.setVisibility(visibility);
+
+        int count = form.getChildCount();
+        for (int i = 0; i < count; i++) {
+            View view = form.getChildAt(i);
+            if (view instanceof TextInputLayout) {
+                ((TextInputLayout) view).getEditText().setEnabled(show);
+            }
+
+            view.setEnabled(show);
+        }
     }
 
     @Override
