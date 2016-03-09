@@ -13,6 +13,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import report.mosquito.droid.R;
+import report.mosquito.droid.di.components.AuthComponent;
+import report.mosquito.droid.di.components.DaggerAuthComponent;
+import report.mosquito.droid.di.modules.NetworkModule;
 import report.mosquito.droid.models.User;
 import report.mosquito.droid.ui.BaseActivity;
 
@@ -42,13 +45,19 @@ public class SignUpActivity extends BaseActivity implements SignUpPresenter.View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        super.getAppComponent().inject(this);
 
         setSupportActionBar(toolbar);
 
-
-
         presenter.setView(this);
+    }
+
+    @Override
+    protected void initializeInjector() {
+        AuthComponent authComponent = DaggerAuthComponent.builder()
+                .networkModule(getNetworkModule())
+                .build();
+
+        authComponent.inject(this);
     }
 
     @OnClick(R.id.sign_up_action)

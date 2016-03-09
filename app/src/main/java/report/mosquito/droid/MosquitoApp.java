@@ -21,10 +21,8 @@ public class MosquitoApp extends Application {
     }
 
     private void initializerInjector() {
-        appComponent = DaggerAppComponent
-                .builder()
+        appComponent = DaggerAppComponent .builder()
                 .appModule(new AppModule(this))
-                .networkModule(new NetworkModule(getString(R.string.api_base_url)))
                 .build();
     }
 

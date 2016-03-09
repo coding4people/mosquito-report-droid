@@ -17,9 +17,7 @@ import retrofit2.Retrofit;
  * Created by adriano on 23/02/16.
  */
 @Singleton
-@Component(modules = { AppModule.class, NetworkModule.class })
+@Component(modules = { AppModule.class })
 public interface AppComponent {
-    void inject(SignUpActivity activity);
-
     Context context();
 }
